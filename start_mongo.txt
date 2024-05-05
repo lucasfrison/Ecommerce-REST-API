@@ -1,0 +1,1 @@
+docker run --rm -d --name mongodb-instance -p 27017:27017 mongo
