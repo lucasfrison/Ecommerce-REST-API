@@ -95,7 +95,7 @@ public class OrderController {
 
     @GET
     @Path("customer/{id}")
-    public Response getCustomerById(@PathParam("id") String id) {
+    public Response getByCustomerId(@PathParam("id") String id) {
         try {
             List<OrderGenericDto> orders = orderService
                     .getByCustomerId(id)
