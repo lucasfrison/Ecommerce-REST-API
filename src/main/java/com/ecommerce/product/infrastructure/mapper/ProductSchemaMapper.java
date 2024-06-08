@@ -5,6 +5,8 @@ import com.ecommerce.product.infrastructure.schema.ProductSchema;
 import org.bson.types.ObjectId;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "jakarta")
 public interface ProductSchemaMapper {
 
@@ -17,6 +19,10 @@ public interface ProductSchemaMapper {
 
     default ObjectId toObjectId(String id) {
         return id == null ? null : new ObjectId(id);
+    }
+
+    default List<String> imagesToImages(List<String> images) {
+        return images;
     }
 
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 
+import java.util.List;
+
 @MongoEntity(collection = "Products")
 @Getter
 @Setter
@@ -16,5 +18,6 @@ public class ProductSchema extends PanacheMongoEntity {
     private String description;
     private Double price;
     private ObjectId categoryId;
+    private List<String> images;
 
 }
