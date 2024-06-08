@@ -1,6 +1,7 @@
 package com.ecommerce.user.authentication.application.controller;
 
 import com.ecommerce.user.authentication.application.dto.LoginDto;
+import com.ecommerce.user.authentication.application.encryption.PasswordHasher;
 import com.ecommerce.user.business.application.mapper.UserMapper;
 import com.ecommerce.user.business.domain.entity.User;
 import com.ecommerce.user.business.domain.exception.UserBusinessException;
@@ -27,6 +28,7 @@ public class AuthenticationController {
     @POST
     public Response login(LoginDto loginRequest) {
         try {
+            loginRequest.setPassword(PasswordHasher.encode(loginRequest.getPassword()));
             User user = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
             return Response.ok(userMapper.userToUserDto(user)).build();
         } catch (UserBusinessException e) {

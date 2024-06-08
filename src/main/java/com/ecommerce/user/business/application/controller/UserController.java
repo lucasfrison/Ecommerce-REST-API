@@ -1,5 +1,6 @@
 package com.ecommerce.user.business.application.controller;
 
+import com.ecommerce.user.authentication.application.encryption.PasswordHasher;
 import com.ecommerce.user.business.application.dto.UserGenericDto;
 import com.ecommerce.user.business.application.dto.UserPersistRequestDto;
 import com.ecommerce.user.business.application.dto.UserUpdateRequestDto;
@@ -82,6 +83,7 @@ public class UserController {
     @POST
     public Response createUser(UserPersistRequestDto userDto, @Context UriInfo uriInfo) {
         try {
+            userDto.setPassword(PasswordHasher.encode(userDto.getPassword()));
             User user = userMapper.userPostRequestDtoToUser(userDto);
             String userGeneratedId = userService.save(user);
             UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();

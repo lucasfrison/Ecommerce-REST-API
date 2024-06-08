@@ -87,7 +87,11 @@
       <artifactId>gson</artifactId>
       <version>2.11.0</version>
     </dependency>
-
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-elytron-security-common</artifactId>
+      <version>3.11.1</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
