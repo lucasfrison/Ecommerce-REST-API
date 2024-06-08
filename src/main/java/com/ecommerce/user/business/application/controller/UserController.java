@@ -1,11 +1,12 @@
-package com.ecommerce.user.application.controller;
+package com.ecommerce.user.business.application.controller;
 
-import com.ecommerce.user.application.dto.UserGenericDto;
-import com.ecommerce.user.application.dto.UserPersistRequestDto;
-import com.ecommerce.user.application.dto.UserUpdateRequestDto;
-import com.ecommerce.user.application.mapper.UserMapper;
-import com.ecommerce.user.domain.entity.User;
-import com.ecommerce.user.domain.service.UserService;
+import com.ecommerce.user.business.application.dto.UserGenericDto;
+import com.ecommerce.user.business.application.dto.UserPersistRequestDto;
+import com.ecommerce.user.business.application.dto.UserUpdateRequestDto;
+import com.ecommerce.user.business.application.mapper.UserMapper;
+import com.ecommerce.user.business.domain.entity.User;
+import com.ecommerce.user.business.domain.service.UserService;
+import com.google.gson.Gson;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
@@ -32,7 +33,7 @@ public class UserController {
                     .toList();
             return Response.ok(users).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -46,7 +47,7 @@ public class UserController {
             }
             return Response.ok(userMapper.userToUserDto(user)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -60,7 +61,7 @@ public class UserController {
             }
             return Response.ok(userMapper.userToUserDto(user)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -74,7 +75,7 @@ public class UserController {
             }
             return Response.ok(userMapper.userToUserDto(user)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -87,7 +88,7 @@ public class UserController {
             uriBuilder.path(userGeneratedId);
             return Response.created(uriBuilder.build()).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -105,7 +106,7 @@ public class UserController {
             userService.merge(user);
             return Response.ok(userMapper.userToUserDto(user)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 

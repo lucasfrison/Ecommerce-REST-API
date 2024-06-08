@@ -1,6 +1,6 @@
-package com.ecommerce.user.application.dto;
+package com.ecommerce.user.business.application.dto;
 
-import com.ecommerce.user.domain.entity.ProfileType;
+import com.ecommerce.user.business.domain.entity.ProfileType;
 import lombok.Data;
 
 @Data

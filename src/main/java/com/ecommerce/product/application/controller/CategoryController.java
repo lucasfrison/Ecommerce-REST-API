@@ -5,6 +5,7 @@ import com.ecommerce.product.application.dto.CategoryPersistRequestDto;
 import com.ecommerce.product.application.mapper.CategoryMapper;
 import com.ecommerce.product.domain.entity.Category;
 import com.ecommerce.product.domain.service.CategoryService;
+import com.google.gson.Gson;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
@@ -31,7 +32,7 @@ public class CategoryController {
                     .toList();
             return Response.ok(categories).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -45,7 +46,7 @@ public class CategoryController {
             }
             return Response.ok(categoryMapper.categoryToCategoryDto(category)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -58,7 +59,7 @@ public class CategoryController {
             uriBuilder.path(categoryGeneratedId);
             return Response.created(uriBuilder.build()).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -75,7 +76,7 @@ public class CategoryController {
             categoryService.merge(category);
             return Response.ok(categoryMapper.categoryToCategoryDto(category)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -86,7 +87,7 @@ public class CategoryController {
             categoryService.remove(id);
             return Response.noContent().build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 

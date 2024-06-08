@@ -1,14 +1,14 @@
-package com.ecommerce.user.domain.entity;
+package com.ecommerce.user.business.application.dto;
 
+import com.ecommerce.user.business.domain.entity.ProfileType;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserGenericDto {
 
     private String id;
     private String name;
     private String email;
-    private String password;
     private String phone;
     private String postalCode;
     private String state;

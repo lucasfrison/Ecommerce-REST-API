@@ -1,6 +1,6 @@
-package com.ecommerce.user.domain.repository;
+package com.ecommerce.user.business.domain.repository;
 
-import com.ecommerce.user.domain.entity.User;
+import com.ecommerce.user.business.domain.entity.User;
 
 import java.util.List;
 
@@ -12,5 +12,6 @@ public interface UserRepository {
     List<User> getAll();
     String save(User product);
     void merge(User product);
+    User login(String email, String password);
 
 }

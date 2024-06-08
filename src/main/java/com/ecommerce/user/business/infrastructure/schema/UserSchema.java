@@ -1,4 +1,4 @@
-package com.ecommerce.user.infrastructure.schema;
+package com.ecommerce.user.business.infrastructure.schema;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import io.quarkus.mongodb.panache.common.MongoEntity;

@@ -5,6 +5,7 @@ import com.ecommerce.order.application.dto.OrderPersistRequestDto;
 import com.ecommerce.order.application.mapper.OrderMapper;
 import com.ecommerce.order.domain.entity.Order;
 import com.ecommerce.order.domain.service.OrderService;
+import com.google.gson.Gson;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
@@ -31,7 +32,7 @@ public class OrderController {
                     .toList();
             return Response.ok(orders).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -45,7 +46,7 @@ public class OrderController {
             }
             return Response.ok(orderMapper.orderToOrderDto(order)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -58,7 +59,7 @@ public class OrderController {
             uriBuilder.path(orderGeneratedId);
             return Response.created(uriBuilder.build()).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -78,7 +79,7 @@ public class OrderController {
             orderService.merge(order);
             return Response.ok(orderMapper.orderToOrderDto(order)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -89,7 +90,7 @@ public class OrderController {
             orderService.remove(id);
             return Response.noContent().build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -104,7 +105,7 @@ public class OrderController {
                     .toList();
             return Response.ok(orders).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 

@@ -1,9 +1,9 @@
-package com.ecommerce.user.infrastructure.repository;
+package com.ecommerce.user.business.infrastructure.repository;
 
-import com.ecommerce.user.domain.entity.User;
-import com.ecommerce.user.domain.repository.UserRepository;
-import com.ecommerce.user.infrastructure.mapper.UserSchemaMapper;
-import com.ecommerce.user.infrastructure.schema.UserSchema;
+import com.ecommerce.user.business.domain.entity.User;
+import com.ecommerce.user.business.domain.repository.UserRepository;
+import com.ecommerce.user.business.infrastructure.mapper.UserSchemaMapper;
+import com.ecommerce.user.business.infrastructure.schema.UserSchema;
 import io.quarkus.mongodb.panache.PanacheMongoRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -55,5 +55,11 @@ public class MongoDBUserRepository implements UserRepository, PanacheMongoReposi
     public void merge(User user) {
         UserSchema userSchema = userSchemaMapper.userToUserSchema(user);
         update(userSchema);
+    }
+
+    @Override
+    public User login(String email, String password) {
+        UserSchema userSchema = find("{ email: ?1, password: ?2 }", email, password).firstResult();
+        return userSchemaMapper.userSchemaToUser(userSchema);
     }
 }

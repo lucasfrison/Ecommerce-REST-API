@@ -1,4 +1,4 @@
-package com.ecommerce.user.domain.entity;
+package com.ecommerce.user.business.domain.entity;
 
 public enum ProfileType {
 

@@ -1,8 +1,8 @@
-package com.ecommerce.user.infrastructure.mapper;
+package com.ecommerce.user.business.infrastructure.mapper;
 
-import com.ecommerce.user.domain.entity.ProfileType;
-import com.ecommerce.user.domain.entity.User;
-import com.ecommerce.user.infrastructure.schema.UserSchema;
+import com.ecommerce.user.business.domain.entity.ProfileType;
+import com.ecommerce.user.business.domain.entity.User;
+import com.ecommerce.user.business.infrastructure.schema.UserSchema;
 import org.bson.types.ObjectId;
 import org.mapstruct.Mapper;
 

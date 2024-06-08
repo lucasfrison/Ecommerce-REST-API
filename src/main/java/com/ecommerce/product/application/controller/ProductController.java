@@ -5,6 +5,7 @@ import com.ecommerce.product.application.dto.ProductPersistRequestDto;
 import com.ecommerce.product.application.mapper.ProductMapper;
 import com.ecommerce.product.domain.entity.Product;
 import com.ecommerce.product.domain.service.ProductService;
+import com.google.gson.Gson;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
@@ -31,7 +32,7 @@ public class ProductController {
                     .toList();
             return Response.ok(products).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -45,7 +46,7 @@ public class ProductController {
             }
             return Response.ok(productMapper.productToProductDto(product)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -59,7 +60,7 @@ public class ProductController {
             }
             return Response.ok(productMapper.productToProductDto(product)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -73,7 +74,7 @@ public class ProductController {
                     .toList();
             return Response.ok(products).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -86,7 +87,7 @@ public class ProductController {
             uriBuilder.path(productGeneratedId);
             return Response.created(uriBuilder.build()).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -106,7 +107,7 @@ public class ProductController {
             productService.merge(product);
             return Response.ok(productMapper.productToProductDto(product)).build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
@@ -117,7 +118,7 @@ public class ProductController {
             productService.remove(id);
             return Response.noContent().build();
         } catch (Exception e) {
-            return Response.serverError().entity(e.getMessage()).build();
+            return Response.serverError().entity(new Gson().toJson(e.getMessage())).build();
         }
     }
 
