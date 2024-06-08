@@ -102,6 +102,7 @@ public class ProductController {
             product.setName(requestDto.getName());
             product.setPrice(requestDto.getPrice());
             product.setCategoryId(requestDto.getCategoryId());
+            product.setImages(requestDto.getImages());
             productService.merge(product);
             return Response.ok(productMapper.productToProductDto(product)).build();
         } catch (Exception e) {
