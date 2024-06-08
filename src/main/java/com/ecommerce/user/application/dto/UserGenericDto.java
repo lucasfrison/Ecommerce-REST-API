@@ -10,6 +10,9 @@ public class UserGenericDto {
     private String name;
     private String email;
     private String phone;
+    private String postalCode;
+    private String state;
+    private String city;
     private String address;
     private String profilePicture;
     private ProfileType profileType;

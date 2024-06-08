@@ -6,6 +6,9 @@ import lombok.Data;
 public class UserUpdateRequestDto {
 
     private String phone;
+    private String postalCode;
+    private String state;
+    private String city;
     private String address;
     private String profilePicture;
 
