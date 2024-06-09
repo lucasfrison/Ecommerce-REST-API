@@ -1,0 +1,50 @@
+services:
+  quarkus:
+    container_name: ecommerce-api
+    build:
+      dockerfile: src/main/docker/Dockerfile.${QUARKUS_MODE:-jvm}
+    ports:
+      - "5000:8080"
+    environment:
+      - MONGODB_URI=mongodb://root:root@mongodb:27017/ecommerce
+      - MONGODB_STATUS_HOST=mongodb
+      - LOG_LEVEL=INFO 2HTTP_ACCESS_LOG_ENABLED=true
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    networks:
+      - ecommerce-network
+
+  swagger:
+    image: swaggerapi/swagger-ui:latest
+    expose:
+      - 3000
+    ports:
+      - "3000:8080"
+    depends_on:
+      - quarkus
+    links:
+      - quarkus
+    environment:
+      - SWAGGER_JSON=/openapi.yaml
+    volumes:
+      - ./openapi.yaml:/openapi.yaml
+    networks:
+      - ecommerce-network
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      - ecommerce-network
+    command: ["mongod", "--bind_ip_all"]
+
+networks:
+  ecommerce-network:
+    driver: bridge
