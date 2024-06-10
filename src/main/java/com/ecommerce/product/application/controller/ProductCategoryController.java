@@ -12,10 +12,10 @@ import jakarta.ws.rs.core.*;
 
 import java.util.List;
 
-@Path("/categories")
+@Path("/products/categories")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CategoryController {
+public class ProductCategoryController {
 
     @Inject
     CategoryService categoryService;

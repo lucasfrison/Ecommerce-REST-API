@@ -20,66 +20,6 @@ paths:
             application/json:
               schema:
                 type: string
-  /categories:
-    get:
-      tags:
-      - Category Controller
-      responses:
-        "200":
-          description: OK
-    post:
-      tags:
-      - Category Controller
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CategoryPersistRequestDto"
-      responses:
-        "200":
-          description: OK
-  /categories/{id}:
-    get:
-      tags:
-      - Category Controller
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: OK
-    put:
-      tags:
-      - Category Controller
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CategoryPersistRequestDto"
-      responses:
-        "200":
-          description: OK
-    delete:
-      tags:
-      - Category Controller
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: OK
   /login:
     post:
       tags:
@@ -180,6 +120,66 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/ProductPersistRequestDto"
+      responses:
+        "200":
+          description: OK
+  /products/categories:
+    get:
+      tags:
+      - Product Category Controller
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Product Category Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryPersistRequestDto"
+      responses:
+        "200":
+          description: OK
+  /products/categories/{id}:
+    get:
+      tags:
+      - Product Category Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Product Category Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryPersistRequestDto"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Product Category Controller
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         "200":
           description: OK
